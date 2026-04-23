@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Agro Vision Hub"
+version = "1.0.0"
+id = "artifacts/agro-vision-hub"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24997
+
+[services.development]
+run = "pnpm --filter @workspace/agro-vision-hub run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/agro-vision-hub", "run", "build" ]
+publicDir = "artifacts/agro-vision-hub/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24997"
+BASE_PATH = "/"

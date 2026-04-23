@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+.fieldmap-container {
+  --bg-color: 20 10% 8%; /* Very dark, warm gray/brown */
+  --text-main: 30 20% 85%;
+  --text-muted: 30 10% 55%;
+  --accent-signal: 142 80% 50%; /* Bright signal green */
+  --border-color: 30 10% 20%;
+  
+  background-color: hsl(var(--bg-color));
+  color: hsl(var(--text-main));
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-serif {
+  font-family: 'Lora', serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.signal-dot {
+  box-shadow: 0 0 15px 2px hsl(var(--accent-signal) / 0.6);
+}
+
+.map-grid-overlay {
+  background-image: 
+    linear-gradient(to right, hsl(30 10% 20% / 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(30 10% 20% / 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}

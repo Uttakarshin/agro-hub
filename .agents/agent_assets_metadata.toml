@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "gOcKB9ecihHrJBcowDFNW"
@@ -72,3 +71,69 @@ id = "0Q1IEFlcotJG0jYb7pPLI"
 uri = "file://artifacts/mockup-sandbox/public/images/tomato-leaf-chat.png"
 type = "image"
 title = "Tomato leaf with brown spots"
+
+[[outputs]]
+id = "XDEFbBVIsf29-JO2CzJvb"
+uri = "file://attached_assets/stock_images/crop-tomato.jpg"
+type = "image"
+title = "fresh tomato plant leaves close up green foliage"
+
+[[outputs]]
+id = "sSOzV1nvVQLe17xczTpPs"
+uri = "file://attached_assets/stock_images/crop-potato.jpg"
+type = "image"
+title = "potato plant leaves close up green foliage"
+
+[[outputs]]
+id = "4MDqYWMsDAcxVhhGyARMn"
+uri = "file://attached_assets/stock_images/crop-corn.jpg"
+type = "image"
+title = "corn maize plant green leaves close up"
+
+[[outputs]]
+id = "bmX_woP-vdG_wEIfb4btM"
+uri = "file://attached_assets/stock_images/crop-rice.jpg"
+type = "image"
+title = "rice paddy green plant leaves close up"
+
+[[outputs]]
+id = "OmyRDAIqVrJ8V3q_ke0vn"
+uri = "file://attached_assets/stock_images/crop-wheat.jpg"
+type = "image"
+title = "wheat plant green leaves close up field"
+
+[[outputs]]
+id = "njl-URhUDsiRGRNpVTkY1"
+uri = "file://attached_assets/stock_images/crop-apple.jpg"
+type = "image"
+title = "apple tree green leaves close up macro"
+
+[[outputs]]
+id = "pmkumCHPkZYup41ftNmF7"
+uri = "file://attached_assets/stock_images/crop-grape.jpg"
+type = "image"
+title = "grape vine green leaves close up"
+
+[[outputs]]
+id = "dTtpG55uDWr9RySAJQkMz"
+uri = "file://attached_assets/stock_images/crop-bellpepper.jpg"
+type = "image"
+title = "bell pepper plant green leaves close up"
+
+[[outputs]]
+id = "N87LKeGt5CNEqaUDahn4Q"
+uri = "file://attached_assets/stock_images/crop-cotton.jpg"
+type = "image"
+title = "cotton plant green leaves close up macro"
+
+[[outputs]]
+id = "JETQd-qxHM0IUkHh9yllN"
+uri = "file://attached_assets/stock_images/crop-soybean.jpg"
+type = "image"
+title = "soybean leaves macro"
+
+[[outputs]]
+id = "HBCecBDzkIWcWD5y9Hsir"
+uri = "file://attached_assets/stock_images/hero-leaf-bg.jpg"
+type = "image"
+title = "beautiful single green leaf macro photography dewdrops natural light"

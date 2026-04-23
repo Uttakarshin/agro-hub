@@ -1,57 +1,11 @@
 import { Link } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { Leaf, Camera, Brain, ShieldCheck, Sparkles, BarChart3 } from "lucide-react";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
-
-const BG_IMAGES = [
-  `${BASE}/hero-fields.jpg`,
-  `${BASE}/hero-leaf.jpg`,
-  `${BASE}/about-farmer.jpg`,
-  `${BASE}/hero-scan.png`,
-  `${BASE}/dashboard-bg.jpg`,
-];
-
-function AnimatedBackground() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setI((p) => (p + 1) % BG_IMAGES.length), 6000);
-    return () => clearInterval(t);
-  }, []);
-  return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
-      <AnimatePresence mode="sync">
-        <motion.img
-          key={i}
-          src={BG_IMAGES[i]}
-          alt=""
-          initial={{ opacity: 0, scale: 1.15 }}
-          animate={{ opacity: 1, scale: 1.0 }}
-          exit={{ opacity: 0, scale: 1.0 }}
-          transition={{ opacity: { duration: 2 }, scale: { duration: 8, ease: "linear" } }}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </AnimatePresence>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/75 to-black/90" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/70" />
-      <motion.div
-        aria-hidden
-        className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-emerald-500/20 blur-[120px]"
-        animate={{ x: [0, 80, 0], y: [0, 60, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute -bottom-40 -right-40 h-[600px] w-[600px] rounded-full bg-lime-400/15 blur-[140px]"
-        animate={{ x: [0, -60, 0], y: [0, -80, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-      />
-    </div>
-  );
-}
 
 export default function Landing() {
   return (

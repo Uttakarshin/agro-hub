@@ -10,7 +10,7 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 export default function Landing() {
   return (
     <div className="min-h-screen text-white relative">
-      <AnimatedBackground images={[`${BASE}/landing-bg.png`, `${BASE}/hero-fields.jpg`, `${BASE}/about-farmer.jpg`, `${BASE}/hero-leaf.jpg`]} intervalMs={9000} />
+      <AnimatedBackground images={[`${BASE}/landing-bg-2.png`, `${BASE}/landing-bg.png`, `${BASE}/hero-fields.jpg`, `${BASE}/about-farmer.jpg`, `${BASE}/hero-leaf.jpg`]} intervalMs={8000} />
 
       <header className="sticky top-0 z-40 border-b border-white/10 backdrop-blur-md bg-black/40">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-14 px-4">

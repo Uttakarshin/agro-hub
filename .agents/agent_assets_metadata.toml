@@ -42,3 +42,9 @@ id = "EaDr2D6DLXqtNAlc0xDm5"
 uri = "file://artifacts/agro-vision-hub/public/landing-bg.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "hrwHiDYFTwjZEeCwFyHrJ"
+uri = "file://artifacts/agro-vision-hub/public/landing-bg-2.png"
+type = "image"
+title = "generated_image"

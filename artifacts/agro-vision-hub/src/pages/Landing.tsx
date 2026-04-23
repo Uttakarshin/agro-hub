@@ -22,23 +22,61 @@ export default function Landing() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <img src={`${BASE}/hero-fields.jpg`} alt="" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/55 to-black/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70" />
         </div>
-        <div className="max-w-7xl mx-auto px-4 py-24 md:py-32 text-white">
+        <div className="max-w-7xl mx-auto px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center text-white">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-medium border border-white/20">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/25 backdrop-blur text-xs font-semibold border border-emerald-300/40 text-emerald-50">
               <Sparkles className="h-3.5 w-3.5" /> Powered by Gemini Vision
             </span>
-            <h1 className="mt-6 text-4xl md:text-6xl font-bold tracking-tight max-w-3xl">
+            <h1 className="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               Spot crop disease in seconds — straight from a leaf photo.
             </h1>
-            <p className="mt-5 text-lg md:text-xl text-white/90 max-w-2xl">
+            <p className="mt-5 text-lg md:text-xl text-white font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
               Snap a leaf. Get an instant AI diagnosis with severity, treatment, and prevention. Built for real farms, not labs.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/sign-up"><Button size="lg" className="text-base h-12 px-6" data-testid="button-cta-start">Start scanning free</Button></Link>
-              <Link href="/about"><Button size="lg" variant="outline" className="text-base h-12 px-6 bg-white/10 border-white/30 text-white hover:bg-white/20" data-testid="button-cta-about">How it works</Button></Link>
+              <Link href="/sign-up"><Button size="lg" className="text-base h-12 px-6 shadow-lg shadow-emerald-900/40" data-testid="button-cta-start">Start scanning free</Button></Link>
+              <Link href="/about"><Button size="lg" variant="outline" className="text-base h-12 px-6 bg-white/15 border-white/40 text-white hover:bg-white/25" data-testid="button-cta-about">How it works</Button></Link>
             </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, x: 40 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
+            className="relative hidden md:block"
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/20"
+            >
+              <img src={`${BASE}/hero-scan.png`} alt="AI scanning a crop leaf" className="w-full h-[460px] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-900/40 via-transparent to-transparent" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="absolute -bottom-5 -left-5 bg-white/95 text-emerald-900 rounded-2xl px-4 py-3 shadow-xl backdrop-blur flex items-center gap-3"
+            >
+              <div className="h-10 w-10 rounded-full leaf-gradient flex items-center justify-center">
+                <Leaf className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-emerald-700">Live diagnosis</div>
+                <div className="text-sm font-bold">Early Blight · 92% confidence</div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.0 }}
+              className="absolute -top-4 -right-4 bg-emerald-600 text-white rounded-full px-4 py-2 shadow-xl text-xs font-bold flex items-center gap-1.5"
+            >
+              <Sparkles className="h-3.5 w-3.5" /> AI in 2s
+            </motion.div>
           </motion.div>
         </div>
       </section>

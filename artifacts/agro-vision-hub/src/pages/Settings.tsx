@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { customFetch } from "@workspace/api-client-react/custom-fetch";
 import { useUser, useClerk } from "@clerk/react";
@@ -40,13 +41,18 @@ export default function SettingsPage() {
   if (!local) return <div className="max-w-4xl mx-auto px-4 py-8"><div className="h-96 rounded-xl animate-shimmer bg-muted" /></div>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
-      <div>
+    <motion.div
+      className="max-w-4xl mx-auto px-4 py-8 space-y-6"
+      initial="hidden"
+      animate="show"
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07 } } }}
+    >
+      <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
         <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
         <p className="text-muted-foreground mt-1">Personalize how Agro Vision Hub works for you.</p>
-      </div>
+      </motion.div>
 
-      <Card>
+      <MCard>
         <CardHeader><CardTitle className="flex items-center gap-2"><Palette className="h-5 w-5 text-emerald-600" />Appearance</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <Row label="Theme" hint="Light, dark, or follow system">
@@ -60,9 +66,9 @@ export default function SettingsPage() {
             </Select>
           </Row>
         </CardContent>
-      </Card>
+      </MCard>
 
-      <Card>
+      <MCard>
         <CardHeader><CardTitle className="flex items-center gap-2"><Globe className="h-5 w-5 text-emerald-600" />Language &amp; region</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <Row label="Language" hint="App language for menus and labels">
@@ -80,9 +86,9 @@ export default function SettingsPage() {
             </Select>
           </Row>
         </CardContent>
-      </Card>
+      </MCard>
 
-      <Card>
+      <MCard>
         <CardHeader><CardTitle className="flex items-center gap-2"><Ruler className="h-5 w-5 text-emerald-600" />Units</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <Row label="Measurement system" hint="Used in tips and weather">
@@ -104,9 +110,9 @@ export default function SettingsPage() {
             </Select>
           </Row>
         </CardContent>
-      </Card>
+      </MCard>
 
-      <Card>
+      <MCard>
         <CardHeader><CardTitle className="flex items-center gap-2"><Bell className="h-5 w-5 text-emerald-600" />Notifications</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <SwitchRow label="All notifications" hint="Master toggle for in-app and email notifications" checked={local.notificationsEnabled} onChange={(v) => update({ notificationsEnabled: v })} testId="switch-notif" />
@@ -114,18 +120,18 @@ export default function SettingsPage() {
           <SwitchRow label="Weather alerts" hint="Warnings about disease-favorable weather" checked={local.weatherAlerts} onChange={(v) => update({ weatherAlerts: v })} testId="switch-weather" />
           <SwitchRow label="Marketing emails" hint="Product updates and growing guides" checked={local.marketingEmails} onChange={(v) => update({ marketingEmails: v })} testId="switch-marketing" />
         </CardContent>
-      </Card>
+      </MCard>
 
-      <Card>
+      <MCard>
         <CardHeader><CardTitle className="flex items-center gap-2"><Database className="h-5 w-5 text-emerald-600" />Scanning</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <SwitchRow label="Auto-save scans" hint="Keep every scan in your history" checked={local.autoSaveScans} onChange={(v) => update({ autoSaveScans: v })} testId="switch-autosave" />
           <SwitchRow label="High-accuracy mode" hint="Use the most precise model (slower)" checked={local.highAccuracyMode} onChange={(v) => update({ highAccuracyMode: v })} testId="switch-accuracy" />
           <SwitchRow label="Offline-friendly preview" hint="Compress images for low-bandwidth use" checked={local.offlineMode} onChange={(v) => update({ offlineMode: v })} testId="switch-offline" />
         </CardContent>
-      </Card>
+      </MCard>
 
-      <Card>
+      <MCard>
         <CardHeader><CardTitle className="flex items-center gap-2"><Lock className="h-5 w-5 text-emerald-600" />Account</CardTitle><CardDescription>Manage your password and account security</CardDescription></CardHeader>
         <CardContent className="space-y-3">
           <div className="flex justify-between items-center">
@@ -137,10 +143,19 @@ export default function SettingsPage() {
           <Button variant="outline" onClick={() => openUserProfile()} data-testid="button-change-password">Change password &amp; security</Button>
           <p className="text-xs text-muted-foreground">Forgot your password? Sign out and use the "Forgot password" link on sign-in to receive a reset email.</p>
         </CardContent>
-      </Card>
-    </div>
+      </MCard>
+    </motion.div>
   );
 }
+
+const MCard = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <motion.div
+    variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } }}
+    whileHover={{ y: -2 }}
+  >
+    <Card className={className}>{children}</Card>
+  </motion.div>
+);
 
 function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (

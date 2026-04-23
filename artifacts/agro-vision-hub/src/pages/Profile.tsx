@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { customFetch } from "@workspace/api-client-react/custom-fetch";
 import { useClerk } from "@clerk/react";
@@ -54,16 +55,22 @@ export default function ProfilePage() {
   if (!form) return <div className="max-w-3xl mx-auto px-4 py-8"><div className="h-96 rounded-xl animate-shimmer bg-muted" /></div>;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
-      <div>
+    <motion.div
+      className="max-w-3xl mx-auto px-4 py-8 space-y-6"
+      initial="hidden"
+      animate="show"
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+    >
+      <motion.div variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}>
         <h1 className="text-3xl font-bold tracking-tight">Profile</h1>
         <p className="text-muted-foreground mt-1">Tell us about you and your farm.</p>
-      </div>
+      </motion.div>
 
+      <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center gap-6">
-            <div className="relative">
+            <motion.div className="relative" whileHover={{ scale: 1.04 }} transition={{ type: "spring", stiffness: 300 }}>
               <Avatar className="h-24 w-24 ring-2 ring-emerald-500/40">
                 <AvatarImage src={form.photoUrl} />
                 <AvatarFallback className="text-2xl leaf-gradient text-white">{(form.fullName || form.email || "U").charAt(0).toUpperCase()}</AvatarFallback>
@@ -72,7 +79,7 @@ export default function ProfilePage() {
                 <Camera className="h-4 w-4" />
               </button>
               <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && handlePhoto(e.target.files[0])} />
-            </div>
+            </motion.div>
             <div>
               <div className="text-xl font-semibold">{form.fullName || "Set your name"}</div>
               <div className="text-sm text-muted-foreground">{form.email}</div>
@@ -80,7 +87,9 @@ export default function ProfilePage() {
           </div>
         </CardContent>
       </Card>
+      </motion.div>
 
+      <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
       <Card>
         <CardHeader><CardTitle>About you</CardTitle></CardHeader>
         <CardContent className="space-y-4">
@@ -93,7 +102,9 @@ export default function ProfilePage() {
           </Button>
         </CardContent>
       </Card>
+      </motion.div>
 
+      <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
       <Card className="border-destructive/30">
         <CardHeader><CardTitle className="text-destructive">Danger zone</CardTitle><CardDescription>Permanently delete your account and all data.</CardDescription></CardHeader>
         <CardContent>
@@ -112,6 +123,7 @@ export default function ProfilePage() {
           </AlertDialog>
         </CardContent>
       </Card>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
